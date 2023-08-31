@@ -1,41 +1,21 @@
 {
-  "name": "css-vue",
-  "private": false,
+  "name": "@squidit/css-vue-docs",
+  "private": true,
   "version": "0.0.1",
   "type": "module",
-  "files": [
-    "dist"
-  ],
-  "main": "./dist/css-vue.umd.js",
-  "module": "./dist/css-vue.es.js",
-  "exports": {
-    ".": {
-      "import": "./dist/css-vue.es.js",
-      "require": "./dist/css-vue.umd.js"
-    },
-    "./dist/css-vue.css": {
-      "import": "./dist/css-vue.css",
-      "require": "./dist/css-vue.css"
-    }
-  },
-  "types": "./dist/main.d.ts",
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "update:lib": "cd src && npm install && rm -r dist && cd .. && vue-tsc && vite build src && rm -r node_modules && rm package-lock.json && npm install",
+    "preview:lib": "vite preview src",
+    "start": "vite"
   },
   "dependencies": {
     "vue": "^3.3.4",
-    "@squidit/css": "latest"
+    "@squidit/css-vue": "file:./src"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
-    "path": "^0.12.7",
-    "rollup-plugin-typescript2": "^0.34.1",
-    "sass": "^1.66.1",
-    "typescript": "^5.2.2",
+    "typescript": "^5.0.2",
     "vite": "^4.4.5",
-    "vite-plugin-dts": "^1.7.1",
     "vue-tsc": "^1.8.5"
   }
 }

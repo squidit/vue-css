@@ -9,4 +9,4 @@ export default {
   }
 };
 
-export { InputSquid };
+export { ButtonSquid, InputSquid, LoaderSquid };
