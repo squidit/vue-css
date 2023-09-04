@@ -1,7 +1,7 @@
 {
   "name": "@squidit/css-vue",
   "private": false,
-  "version": "0.0.2",
+  "version": "0.0.1",
   "type": "module",
   "files": [
     "dist"
@@ -10,6 +10,7 @@
   "module": "./dist/css-vue.es.js",
   "exports": {
     ".": {
+      "types": "./dist/main.d.ts",
       "import": "./dist/css-vue.es.js",
       "require": "./dist/css-vue.umd.js"
     },
@@ -18,7 +19,6 @@
       "require": "./dist/css-vue.css"
     }
   },
-  "types": "./dist/main.d.ts",
   "peerDependencies": {
     "@squidit/css": "latest"
   },

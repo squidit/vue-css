@@ -4,9 +4,11 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "update:lib": "cd src && npm install && rm -r dist && cd .. && vue-tsc && vite build src && rm -r node_modules && rm package-lock.json && npm install",
+    "update:lib": "cd src && npm install && rm -rf dist && cd .. && vue-tsc && vite build src && rm -r node_modules && rm package-lock.json && npm install",
     "preview:lib": "vite preview src",
-    "start": "vite"
+    "start": "vite",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "vue": "^3.3.4",
@@ -14,6 +16,12 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
+    "@vue/eslint-config-prettier": "^8.0.0",
+    "@vue/eslint-config-typescript": "^11.0.3",
+    "eslint": "^8.48.0",
+    "eslint-plugin-vue": "^9.17.0",
+    "husky": "^8.0.3",
+    "prettier": "^3.0.3",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
     "vue-tsc": "^1.8.5"

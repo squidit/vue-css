@@ -22,9 +22,7 @@
 
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./docs/*"
-      ]
+      "@/*": ["./docs/*"]
     }
   },
   "include": ["docs/**/*.ts", "docs/**/*.d.ts", "docs/**/*.tsx", "docs/**/*.vue"],

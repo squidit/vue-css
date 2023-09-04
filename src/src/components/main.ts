@@ -1,12 +1,10 @@
-import type { App } from 'vue';
-import { ButtonSquid, InputSquid, LoaderSquid } from "@/components";
+import type { App } from 'vue'
+import { LoaderSquid } from '@/components'
 
 export default {
   install: (app: App) => {
-    app.component('HelloWorld', ButtonSquid);
-    app.component('HelloWorld', InputSquid);
-    app.component('HelloWorld', LoaderSquid);
-  }
-};
+    app.component('HelloWorld', LoaderSquid)
+  },
+}
 
-export { ButtonSquid, InputSquid, LoaderSquid };
+export { LoaderSquid }
