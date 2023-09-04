@@ -30,7 +30,7 @@ export default defineConfig({
     lib: {
       // Could also be a dictionary or array of multiple entry points
       entry: 'src/components/css-vue.ts',
-      name: 'css-vue',
+      name: 'CssVue',
       formats: ['es', 'cjs', 'umd'],
       fileName: (format) => `css-vue.${format}.js`,
     },

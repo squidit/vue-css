@@ -4,11 +4,12 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "update:lib": "cd src && npm install && rm -rf dist && cd .. && vue-tsc && vite build src && rm -r node_modules && rm package-lock.json && npm install",
-    "preview:lib": "vite preview src",
+    "install:all": "npm install && cd src && npm install && cd .. && vite build src && npm run reset",
+    "update:lib": "cd src && rm package-lock.json && rm -rf node_modules && npm install && rm -rf dist && cd .. && vue-tsc && vite build src && npm run reset",
     "start": "vite",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "reset": "rm package-lock.json && rm -rf node_modules/@squidit/css-vue && npm install"
   },
   "dependencies": {
     "vue": "^3.3.4",
