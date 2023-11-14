@@ -1,0 +1,32 @@
+{
+  "name": "css-vue",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "postinstall": "cd src && npm install",
+    "start": "storybook dev -p 6006",
+    "update": "rm -rf src/dist && vite build src && npm run reset",
+    "build": "rm -rf src/dist && vue-tsc && vite build src",
+    "start:application": "vite",
+    "reset": "rm package-lock.json && rm -rf node_modules/@squidit/css-vue && npm install"
+  },
+  "dependencies": {
+    "@squidit/css-vue": "file:./src",
+    "src": "^1.1.2",
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^7.5.3",
+    "@storybook/addon-interactions": "^7.5.3",
+    "@storybook/addon-links": "^7.5.3",
+    "@storybook/blocks": "^7.5.3",
+    "@storybook/vue3": "^7.5.3",
+    "@storybook/vue3-vite": "^7.5.3",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "storybook": "^7.5.3",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5",
+    "vue-tsc": "^1.8.5"
+  }
+}
