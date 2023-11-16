@@ -1,5 +1,5 @@
 import type { Preview } from "@storybook/vue3"
-import '@squidit/css/dist/css/squid.min.css'
+import '../docs/main.scss'
 
 const preview: Preview = {
   parameters: {

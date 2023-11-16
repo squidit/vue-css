@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { Loader } from '@squidit/css-vue'
+import { Loader } from '@squidit/css-vue'
 </script>
 
 <template>

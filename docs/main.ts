@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import '@squidit/css/dist/css/squid.min.css'
+import './main.scss'
 
 createApp(App).mount('#app')
