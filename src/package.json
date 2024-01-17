@@ -1,0 +1,44 @@
+{
+  "name": "@squidit/css-vue",
+  "version": "1.0.0",
+  "private": false,
+  "keywords": [
+    "css",
+    "sass",
+    "responsive",
+    "front-end",
+    "framework",
+    "web",
+    "vue"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/main.d.ts",
+      "import": "./dist/css-vue.es.js",
+      "require": "./dist/css-vue.umd.js"
+    },
+    "./dist/css-vue.css": {
+      "import": "./dist/css-vue.css",
+      "require": "./dist/css-vue.css"
+    }
+  },
+  "main": "./dist/css-vue.umd.js",
+  "module": "./dist/css-vue.es.js",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@squidit/css": "latest",
+    "vue": "^3.3.8"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.4.1",
+    "path": "^0.12.7",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "sass": "^1.69.5",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.5",
+    "vite-plugin-dts": "^3.6.3"
+  }
+}
