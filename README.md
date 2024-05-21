@@ -3,5 +3,5 @@
 ## Project Setup (Install Project and Lib Dependencies)
 
 ```sh
-npm run install
+npm install
 ```
