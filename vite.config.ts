@@ -28,10 +28,10 @@ export default defineConfig({
     cssCodeSplit: true,
     lib: {
       // Could also be a dictionary or array of multiple entry points
-      entry: 'src/components/css-vue.ts',
-      name: 'css-vue',
+      entry: 'src/components/vue-css.ts',
+      name: 'vue-css',
       formats: ['es', 'cjs', 'umd'],
-      fileName: (format) => `css-vue.${format}.js`,
+      fileName: (format) => `vue-css.${format}.js`,
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
@@ -42,7 +42,7 @@ export default defineConfig({
       external: ['vue', '@squidit/css'],
       output: {
         assetFileNames: (assetInfo) => {
-          if (assetInfo.name === 'main.scss') return 'css-vue.scss'
+          if (assetInfo.name === 'main.scss') return 'vue-css.scss'
           return assetInfo.name || ''
         },
         exports: 'named',
