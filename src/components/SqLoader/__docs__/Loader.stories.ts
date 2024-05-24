@@ -1,10 +1,10 @@
 import type { Meta, StoryFn } from '@storybook/vue3'
-import { Loader } from '../index'
+import { SqLoader } from '../index'
 
 /** This component is a loader */
-const meta: Meta<typeof Loader> = {
+const meta: Meta<typeof SqLoader> = {
   title: 'Components/SqLoader',
-  component: Loader,
+  component: SqLoader,
   tags: ['autodocs'],
   argTypes: {
     size: {
@@ -16,14 +16,14 @@ const meta: Meta<typeof Loader> = {
 
 export default meta
 
-type Story = StoryFn<typeof Loader>
+type Story = StoryFn<typeof SqLoader>
 
 export const Default: Story = (args) => ({
-  components: { Loader },
+  components: { SqLoader },
   setup() {
     return { args }
   },
-  template: '<Loader :color="args.color" :size="args.size" :customSize="args.customSize" :borderSize="args.borderSize"/>',
+  template: '<SqLoader :color="args.color" :size="args.size" :customSize="args.customSize" :borderSize="args.borderSize"/>',
 })
 
 Default.args = {

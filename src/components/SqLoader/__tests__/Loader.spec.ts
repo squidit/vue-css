@@ -1,9 +1,9 @@
 import { mount } from '@vue/test-utils'
-import { Loader } from '../index'
+import { SqLoader } from '../index'
 
-describe('Loader', () => {
+describe('SqLoader', () => {
   it('Should Render', () => {
-    const mountLoader = mount(Loader)
+    const mountLoader = mount(SqLoader)
     expect(mountLoader).toBeTruthy()
   })
 })

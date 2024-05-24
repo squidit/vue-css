@@ -45,11 +45,11 @@ After installation, you can import and use the components as needed in your Vue3
 
 ```html
 <script setup lang="ts">
-import { Loader } from '@squidit/vue-css'
+import { SqLoader } from '@squidit/vue-css'
 </script>
 
 <template>
-  <Loader />
+  <SqLoader />
 </template>
 
 <style scoped></style>
