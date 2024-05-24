@@ -1,6 +1,6 @@
 {
   "name": "@squidit/vue-css",
-  "version": "1.2.1",
+  "version": "1.2.11",
   "scripts": {
     "start": "vite",
     "storybook": "storybook dev -p 6006",
@@ -12,6 +12,7 @@
     "lint": "eslint src --ext .ts,.vue --fix",
     "prepare": "husky install"
   },
+  "description": "Vue CSS is an abstraction in Vue3 of the Squid CSS framework",
   "type": "module",
   "main": "dist/vue-css.cjs.js",
   "module": "dist/vue-css.es.js",
