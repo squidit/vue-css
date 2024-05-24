@@ -1,29 +1,34 @@
-import { action } from '@storybook/addon-actions'
+import type { Meta, StoryFn } from '@storybook/vue3'
 import { Loader } from '../index'
 
-export default {
-  title: 'Loader',
-  excludeStories: /.*Data$/,
-}
-
-export const actionsData = {
-  onPinTask: action('onPinTask'),
-  onArchiveTask: action('onArchiveTask'),
-}
-
-export const loaderData = {
-  title: 'Loader',
-}
-
-const loaderTemplate = `<loader />`
-
-export const Default = () => ({
-  components: { Loader },
-  template: loaderTemplate,
-  props: {
-    task: {
-      default: () => loaderData,
+/** This component is a loader */
+const meta: Meta<typeof Loader> = {
+  title: 'Components/SqLoader',
+  component: Loader,
+  tags: ['autodocs'],
+  argTypes: {
+    size: {
+      control: 'radio',
+      options: ['', 'small', 'bigger', 'big'],
     },
   },
-  methods: actionsData,
+}
+
+export default meta
+
+type Story = StoryFn<typeof Loader>
+
+export const Default: Story = (args) => ({
+  components: { Loader },
+  setup() {
+    return { args }
+  },
+  template: '<Loader :color="args.color" :size="args.size" :customSize="args.customSize" :borderSize="args.borderSize"/>',
 })
+
+Default.args = {
+  color: '',
+  size: '',
+  customSize: '',
+  borderSize: '',
+}

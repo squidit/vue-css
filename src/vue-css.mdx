@@ -1,28 +1,28 @@
+import { Meta } from '@storybook/blocks'
+import VueLogo from './assets/img/svg/vue-logo.svg'
+
+<Meta title="Getting Started/Welcome" />
+
 <div>
-  <div class="logo">
-    <style>
-      .logo {
-        display: flex; 
-        justify-content: center; 
-        margin-bottom: 16px;
-      }
-    </style>
-    <img src="./src/assets/img/svg/vue-logo.svg" width="60px" align="center" alt="Vue" />
-    <span class="plus">
-      <style>
-        .plus {
-          margin: 0 1rem 0 0.5rem; 
-          font-size: 30px;
-        }
-      </style>
-      +
-    </span>
+  <div style={{display: "flex", justifyContent: "center", marginBottom: "16px"}}>
+    <img src={VueLogo} width="60px" align="center" alt="Vue" />
+    <span style={{margin: "0 1rem 0 0.5rem", fontSize: "30px"}}>+</span>
     <img src="https://squidit.com.br/wp-content/themes/squid/assets/img/logo.svg" width="180px" align="center" alt="Squid" />
   </div>
 
   <h1 align="center">@squidit/vue-css</h1>
-  <p align="center">This repository contains a Vue3 component library developed to facilitate the creation of consistent and elegant interfaces, following a custom style guide. The included components are highly customizable and designed to be reusable across a variety of Vue3 projects.</p>
+  <p align="center">This repository contains a Vue component library developed to facilitate the creation of consistent and elegant interfaces, following a custom style guide. The included components are highly customizable and designed to be reusable across a variety of Vue projects.</p>
 </div>
+
+## Table of contents
+
+* [Welcome to Squid Design System](#welcome-to-squid-design-system)
+* [Style](#style)
+* [Components](#components)
+* [Installation](#installation)
+* [How to Use](#how-to-use)
+* [Customization](#customization)
+* [License](#license)
 
 ## Welcome to Squid Design System
 
@@ -31,14 +31,7 @@
 This framework provides low level utilities and UI components for building
 custom experiences.
 
-<hr class="separator">
-  <style>
-    .separator {
-      border-width: 0; 
-      margin: 2rem 0;
-    }
-  </style>
-</hr>
+<hr style={{ borderWidth: "0", margin: "2rem 0" }} />
 
 ## Style
 
@@ -46,12 +39,12 @@ Our Design System can be seen [here](https://css.squidit.com.br/styleguide)
 
 ## Components
 
-UI Components are currently offered as Vue3 (Web) components.
+UI Components are currently offered as Vue (Web) components.
 
 ## Installation
 
 1. Node version >= 18
-2. To use this library in your Vue3 project, you can install it via npm or yarn:
+2. To use this library in your Vue project, you can install it via npm or yarn:
 
 ```bash
 npm install @squidit/css @squidit/vue-css
@@ -63,7 +56,7 @@ yarn add @squidit/css @squidit/vue-css
 
 ## How to Use
 
-After installation, you can import and use the components as needed in your Vue3 components:
+After installation, you can import and use the components as needed in your Vue components:
 
 ```html
 <script setup lang="ts">
