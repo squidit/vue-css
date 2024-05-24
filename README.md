@@ -1,22 +1,7 @@
 <div>
-  <div class="logo">
-    <style>
-      .logo {
-        display: flex; 
-        justify-content: center; 
-        margin-bottom: 16px;
-      }
-    </style>
+  <div align="center">
     <img src="./src/assets/img/svg/vue-logo.svg" width="60px" align="center" alt="Vue" />
-    <span class="plus">
-      <style>
-        .plus {
-          margin: 0 1rem 0 0.5rem; 
-          font-size: 30px;
-        }
-      </style>
-      +
-    </span>
+    +&ensp;
     <img src="https://squidit.com.br/wp-content/themes/squid/assets/img/logo.svg" width="180px" align="center" alt="Squid" />
   </div>
 
@@ -31,14 +16,7 @@
 This framework provides low level utilities and UI components for building
 custom experiences.
 
-<hr class="separator">
-  <style>
-    .separator {
-      border-width: 0; 
-      margin: 2rem 0;
-    }
-  </style>
-</hr>
+&nbsp;
 
 ## Style
 
