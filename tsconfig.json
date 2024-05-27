@@ -27,7 +27,6 @@
       "@/*": ["./*"],
       "@src/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
-      "@assets/*": ["./src/components/*"],
     },
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
