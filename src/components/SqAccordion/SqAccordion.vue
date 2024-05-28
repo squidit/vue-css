@@ -18,7 +18,7 @@ onMounted(() => {
 
 const returnOpenValue = (instance: ComponentInternalInstance) => {
   const { devtoolsRawSetupState } = instance as unknown as { devtoolsRawSetupState: { open: { _value: boolean } } }
-  return devtoolsRawSetupState.open._value || devtoolsRawSetupState.open
+  return devtoolsRawSetupState?.open?._value || devtoolsRawSetupState?.open
 }
 
 const closeCollapses = (collapse: ComponentInternalInstance) => {
