@@ -1,7 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/vue3'
 import { SqLoader } from '../index'
 
-/** This component is a loader */
 const meta: Meta<typeof SqLoader> = {
   title: 'Components/SqLoader',
   component: SqLoader,
