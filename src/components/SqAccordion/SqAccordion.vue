@@ -17,7 +17,7 @@ onMounted(() => {
 })
 
 const returnOpenValue = (instance: ComponentInternalInstance) => {
-  const { devtoolsRawSetupState } = instance as unknown as { devtoolsRawSetupState: { open: { _value: boolean } } }
+  const { devtoolsRawSetupState } = instance as unknown as { devtoolsRawSetupState: { open: { _value?: boolean } } }
   return devtoolsRawSetupState?.open?._value ?? devtoolsRawSetupState?.open
 }
 
@@ -32,12 +32,9 @@ const closeCollapses = (collapse: ComponentInternalInstance) => {
 }
 
 const registerChild = (child: ComponentInternalInstance) => {
-  let index = 0
-  const findedChild = collapses.value.find((c, i) => c.uid === child.uid && (index = i))
-  if (!findedChild) {
+  if (!collapses.value.find((c) => c.uid === child.uid)) {
     collapses.value.push(child)
-  } else if (returnOpenValue(findedChild as ComponentInternalInstance) !== returnOpenValue(child as ComponentInternalInstance)) {
-    collapses.value.splice(index, 1, child)
+  } else {
     closeCollapses(child as ComponentInternalInstance)
   }
 }
