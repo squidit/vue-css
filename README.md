@@ -1,6 +1,6 @@
 <div>
   <div align="center">
-    <img src="/img/svg/vue-logo.svg" width="60px" align="center" alt="Vue" />
+    <img src="./public/img/svg/vue-logo.svg" width="60px" align="center" alt="Vue" />
     +&ensp;
     <img src="https://squidit.com.br/wp-content/themes/squid/assets/img/logo.svg" width="180px" align="center" alt="Squid" />
   </div>
