@@ -18,12 +18,12 @@ export const Default: Story = (args) => ({
     return { args }
   },
   template: `
-    <SqAccordion :onlyOne="args.onlyOne" :openFirst="args.openFirst">
+    <SqAccordion :only-one="args.openFirst" :open-first="args.openFirst">
       <SqCollapse
         :open="false"
         color="var(--pink)"
-        colorIcons="var(--background)"
-        >
+        icons-color="var(--background)"
+      >
         <template #header>
           <span :style="{ color: 'var(--background)' }">Title 1</span>
         </template>
@@ -32,8 +32,8 @@ export const Default: Story = (args) => ({
       <SqCollapse
         :open="false"
         color="var(--lilac)"
-        colorIcons="var(--background)"
-        >
+        icons-color="var(--background)"
+      >
         <template #header>
           <span :style="{ color: 'var(--background)' }">Title 2</span>
         </template>
@@ -42,8 +42,8 @@ export const Default: Story = (args) => ({
       <SqCollapse
         :open="false"
         color="var(--cian)"
-        colorIcons="var(--background)"
-        >
+        icons-color="var(--background)"
+      >
         <template #header>
           <span :style="{ color: 'var(--background)' }">Title 3</span>
         </template>

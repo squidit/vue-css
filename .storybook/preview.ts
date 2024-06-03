@@ -42,7 +42,6 @@ export const parameters: Parameters = {
       order: ['Getting Started', 'Components'],
     },
   },
-  layout: 'centered',
 }
 
 const themeSelect = (Story, context) => {

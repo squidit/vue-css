@@ -22,7 +22,11 @@ export const Default: Story = (args) => ({
   setup() {
     return { args }
   },
-  template: '<SqLoader :color="args.color" :size="args.size" :customSize="args.customSize" :borderSize="args.borderSize"/>',
+  template: `
+    <div :style="{ display: 'flex', justifyContent: 'center' }">
+      <SqLoader :color="args.color" :size="args.size" :custom-size="args.customSize" :border-size="args.borderSize"/>
+    </div>
+  `,
 })
 
 Default.args = {

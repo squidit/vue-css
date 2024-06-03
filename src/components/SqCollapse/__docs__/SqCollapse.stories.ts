@@ -1,5 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/vue3'
 import { SqCollapse } from '../index'
+import { provide } from 'vue'
 
 const meta: Meta<typeof SqCollapse> = {
   title: 'Components/SqCollapse',
@@ -14,6 +15,8 @@ type Story = StoryFn<typeof SqCollapse>
 export const Default: Story = (args) => ({
   components: { SqCollapse },
   setup() {
+    const registerChild = () => {}
+    provide('parentRegister', registerChild)
     return { args }
   },
   template: `
@@ -22,12 +25,13 @@ export const Default: Story = (args) => ({
       :color="args.color"
       :loading="args.loading"
       :disabled="args.disabled"
-      :colorIcons="args.colorIcons"
-      :colorBackgroundIcon="args.colorBackgroundIcon"
-      :fontSizeIcon="args.fontSizeIcon"
-      :heightIcon="args.heightIcon"
-      :noPadding="args.noPadding"
-      :customClass="args.customClass"
+      :icons-color="args.iconsColor"
+      :background-icon-color="args.backgroundIconColor"
+      :font-size-icon="args.fontSizeIcon"
+      :height-icon="args.heightIcon"
+      :no-padding="args.noPadding"
+      :custom-class="args.customClass"
+      @opened-emitter="() => console.log('Collapse clicked')"
     >
       <template #header>
         <span :style="{ color: 'var(--background)' }">Title 1</span>
@@ -42,8 +46,8 @@ Default.args = {
   color: 'var(--pink)',
   loading: false,
   disabled: false,
-  colorIcons: 'var(--background)',
-  colorBackgroundIcon: '',
+  iconsColor: 'var(--background)',
+  backgroundIconColor: '',
   fontSizeIcon: '',
   heightIcon: '',
   noPadding: false,

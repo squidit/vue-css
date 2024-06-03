@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { getCurrentInstance, inject, ref, onMounted, ComponentInternalInstance, onUpdated } from 'vue'
+import { getCurrentInstance, inject, ref, onMounted, ComponentInternalInstance } from 'vue'
 import { SqColorsHelper } from '../../helpers/index'
 import { SqLoader } from '../index'
 
@@ -10,8 +10,8 @@ const props = defineProps<{
   loading?: boolean
   disabled?: boolean
   color?: string
-  colorIcons?: string
-  colorBackgroundIcon?: string
+  iconsColor?: string
+  backgroundIconColor?: string
   fontSizeIcon?: string
   heightIcon?: string
   noPadding?: boolean
@@ -23,6 +23,8 @@ type Emits = {
 }
 
 const emit = defineEmits<Emits>()
+
+const instance = getCurrentInstance()
 
 const open = ref(props?.open)
 
@@ -44,27 +46,25 @@ onMounted(() => {
   wrapper.value?.focus()
 })
 
-onUpdated(() => {
-  emitRegister()
-})
-
 const parentRegister = inject<(child: ComponentInternalInstance) => void>('parentRegister')
 
 const emitRegister = () => {
-  const instance = getCurrentInstance()
   if (parentRegister && instance) {
     parentRegister(instance)
   }
 }
 
-const toggleCollapse = () => {
+const toggleCollapse = (emit = false) => {
   if (!props?.disabled && !props?.loading && !opening.value) {
     opening.value = wrapper.value?.clientHeight + 'px'
     clearTimeout(timeout.value)
     timeout.value = setTimeout(() => {
       opening.value = false
       open.value = !open.value
-    }, 500)
+      if (emit) {
+        emitRegister()
+      }
+    }, 150)
   }
 }
 
@@ -92,7 +92,7 @@ defineExpose({
         backgroundColor: hoverHeader ? setHover(props?.color) : props?.color,
         borderColor: hoverHeader ? setHover(props?.color) : props?.color,
       }"
-      @click="emit('opened-emitter', !open, element), toggleCollapse()"
+      @click="emit('opened-emitter', !open, element), toggleCollapse(true)"
       @mouseover="hoverHeader = true"
       @mouseleave="hoverHeader = false"
       ref="element"
@@ -103,8 +103,8 @@ defineExpose({
       <div
         class="wrapper-icons"
         :style="{
-          color: props?.colorIcons,
-          backgroundColor: hoverIcon ? setHover(props?.colorBackgroundIcon) : props?.colorBackgroundIcon,
+          color: props?.iconsColor,
+          backgroundColor: hoverIcon ? setHover(props?.backgroundIconColor) : props?.backgroundIconColor,
           fontSize: props?.fontSizeIcon,
           height: props?.heightIcon,
           lineHeight: props?.heightIcon,
