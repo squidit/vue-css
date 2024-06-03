@@ -18,7 +18,7 @@ export const Default: Story = (args) => ({
     return { args }
   },
   template: `
-    <SqAccordion :only-one="args.openFirst" :open-first="args.openFirst">
+    <SqAccordion :only-one="args.onlyOne" :open-first="args.openFirst">
       <SqCollapse
         :open="false"
         color="var(--pink)"
