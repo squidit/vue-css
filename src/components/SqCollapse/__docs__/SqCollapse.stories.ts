@@ -1,6 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/vue3'
 import { SqCollapse } from '../index'
-import { provide } from 'vue'
 
 const meta: Meta<typeof SqCollapse> = {
   title: 'Components/SqCollapse',
@@ -15,8 +14,6 @@ type Story = StoryFn<typeof SqCollapse>
 export const Default: Story = (args) => ({
   components: { SqCollapse },
   setup() {
-    const registerChild = () => {}
-    provide('parentRegister', registerChild)
     return { args }
   },
   template: `

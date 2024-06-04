@@ -16,15 +16,14 @@ onMounted(() => {
   }
 })
 
-const returnOpenValue = (instance: ComponentInternalInstance) => {
-  const { devtoolsRawSetupState } = instance as unknown as { devtoolsRawSetupState: { open: { _value?: boolean } } }
-  return devtoolsRawSetupState?.open?._value ?? devtoolsRawSetupState?.open
+const returnOpenValue = (instance: ComponentInternalInstance): boolean => {
+  return instance?.exposed?.open?.value ?? instance?.exposed?.open
 }
 
 const closeCollapses = (collapse: ComponentInternalInstance) => {
   if (props?.onlyOne) {
     collapses.value.forEach((thisCollapse) => {
-      if (collapse.uid !== thisCollapse.uid && returnOpenValue(thisCollapse as ComponentInternalInstance)) {
+      if (returnOpenValue(collapse) && returnOpenValue(thisCollapse as ComponentInternalInstance) && collapse.uid !== thisCollapse.uid) {
         thisCollapse.exposed?.toggleCollapse()
       }
     })

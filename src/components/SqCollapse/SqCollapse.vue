@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { getCurrentInstance, inject, ref, onMounted, ComponentInternalInstance } from 'vue'
+import { getCurrentInstance, inject, ref, onMounted, ComponentInternalInstance, onUpdated } from 'vue'
 import { SqColorsHelper } from '../../helpers/index'
 import { SqLoader } from '../index'
 
@@ -24,7 +24,7 @@ type Emits = {
 
 const emit = defineEmits<Emits>()
 
-const instance = getCurrentInstance()
+const instanceControlOpen = ref(false)
 
 const open = ref(props?.open)
 
@@ -40,30 +40,36 @@ const content = ref<HTMLDivElement>()
 const wrapper = ref<HTMLDivElement>()
 
 onMounted(() => {
-  emitRegister()
+  emitRegister(true)
   element.value?.focus()
   content.value?.focus()
   wrapper.value?.focus()
 })
 
-const parentRegister = inject<(child: ComponentInternalInstance) => void>('parentRegister')
+onUpdated(() => {
+  emitRegister()
+})
 
-const emitRegister = () => {
-  if (parentRegister && instance) {
-    parentRegister(instance)
+const emitRegister = (bypass = false) => {
+  const instance = getCurrentInstance()
+  if (instance?.parent?.type?.__name === 'SqAccordion') {
+    if (instance && (instance?.exposed?.open?.value !== instanceControlOpen.value || bypass)) {
+      instanceControlOpen.value = instance?.exposed?.open?.value
+      const parentRegister = inject<(child: ComponentInternalInstance) => void>('parentRegister')
+      if (parentRegister) {
+        parentRegister(instance)
+      }
+    }
   }
 }
 
-const toggleCollapse = (emit = false) => {
+const toggleCollapse = () => {
   if (!props?.disabled && !props?.loading && !opening.value) {
     opening.value = wrapper.value?.clientHeight + 'px'
     clearTimeout(timeout.value)
     timeout.value = setTimeout(() => {
       opening.value = false
       open.value = !open.value
-      if (emit) {
-        emitRegister()
-      }
     }, 150)
   }
 }
@@ -73,6 +79,7 @@ const setHover = (color?: string) => {
 }
 
 defineExpose({
+  open,
   toggleCollapse,
 })
 </script>
@@ -92,7 +99,7 @@ defineExpose({
         backgroundColor: hoverHeader ? setHover(props?.color) : props?.color,
         borderColor: hoverHeader ? setHover(props?.color) : props?.color,
       }"
-      @click="emit('opened-emitter', !open, element), toggleCollapse(true)"
+      @click="emit('opened-emitter', !open, element), toggleCollapse()"
       @mouseover="hoverHeader = true"
       @mouseleave="hoverHeader = false"
       ref="element"
