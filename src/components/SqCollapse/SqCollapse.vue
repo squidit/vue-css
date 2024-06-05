@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { getCurrentInstance, inject, ref, onMounted, ComponentInternalInstance, onUpdated } from 'vue'
-import { SqColorsHelper } from '../../helpers/index'
-import { SqLoader } from '../index'
+import { SqLoader } from '@components/index'
+import { SqColorsHelper } from '@helpers/index'
 
 const sqColorsHelper = new SqColorsHelper()
 

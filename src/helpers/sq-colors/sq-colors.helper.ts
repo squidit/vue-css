@@ -1,4 +1,4 @@
-import { SqWindowHelper } from '../index'
+import { SqWindowHelper } from '@helpers/index'
 
 export class SqColorsHelper {
   sqWindowHelper = new SqWindowHelper()

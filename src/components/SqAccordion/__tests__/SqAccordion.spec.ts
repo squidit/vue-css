@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import { SqAccordion } from '../index'
+import { SqAccordion } from '@components/index'
 
 describe('SqAccordion', () => {
   it('Should Render', () => {

@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import { SqCollapse } from '../index'
+import { SqCollapse } from '@components/index'
 
 describe('SqCollapse', () => {
   it('Should Render', () => {

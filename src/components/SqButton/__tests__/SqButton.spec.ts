@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import { SqButton } from '../index'
+import { SqButton } from '@components/index'
 
 describe('SqButton', () => {
   it('Should Render', () => {

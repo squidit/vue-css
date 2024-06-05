@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { SqColorsHelper } from '../../helpers/index'
-import { SqLoader } from '../index'
 import { ref, StyleValue } from 'vue'
+import { SqLoader } from '@components/index'
+import { SqColorsHelper } from '@helpers/index'
 
 const sqColorsHelper = new SqColorsHelper()
 

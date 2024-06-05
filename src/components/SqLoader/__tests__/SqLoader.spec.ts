@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import { SqLoader } from '../index'
+import { SqLoader } from '@components/index'
 
 describe('SqLoader', () => {
   it('Should Render', () => {

@@ -2,7 +2,7 @@
 import { provide, ref, onMounted, ComponentInternalInstance } from 'vue'
 
 const props = defineProps<{
-  onlyOne?: boolean
+  openOnlyOne?: boolean
   openFirst?: boolean
 }>()
 
@@ -21,7 +21,7 @@ const returnOpenValue = (instance: ComponentInternalInstance): boolean => {
 }
 
 const closeCollapses = (collapse: ComponentInternalInstance) => {
-  if (props?.onlyOne) {
+  if (props?.openOnlyOne) {
     collapses.value.forEach((thisCollapse) => {
       if (returnOpenValue(collapse) && returnOpenValue(thisCollapse as ComponentInternalInstance) && collapse.uid !== thisCollapse.uid) {
         thisCollapse.exposed?.toggleCollapse()

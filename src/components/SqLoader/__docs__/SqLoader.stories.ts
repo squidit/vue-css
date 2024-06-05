@@ -1,5 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/vue3'
-import { SqLoader } from '../index'
+import { SqLoader } from '@components/index'
 
 const meta: Meta<typeof SqLoader> = {
   title: 'Components/SqLoader',
@@ -24,14 +24,7 @@ export const Default: Story = (args) => ({
   },
   template: `
     <div :style="{ display: 'flex', justifyContent: 'center' }">
-      <SqLoader :color="args.color" :size="args.size" :custom-size="args.customSize" :border-size="args.borderSize"/>
+      <SqLoader v-bind="args"/>
     </div>
   `,
 })
-
-Default.args = {
-  color: '',
-  size: '',
-  customSize: '',
-  borderSize: '',
-}
