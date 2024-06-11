@@ -54,6 +54,40 @@ yarn add @squidit/css @squidit/vue-css
 
 3. Configure css in your project according to the @squidit/css documentation described in the project's [README](https://github.com/squidit/css/blob/master/README.md)
 
+4. Configure i18n like te example below:
+
+main.ts
+
+```typescript
+import { createApp } from 'vue'
+import App from '@src/App.vue'
+import i18n from '@src/i18n'
+
+createApp(App).use(i18n).mount('#app')
+```
+
+i18n.ts
+
+```typescript
+import { createI18n } from 'vue-i18n'
+import { mergeMessages } from '@squidit/vue-css'
+
+const getProjectMessages = () => ({
+  en: {teste: 'Test'},
+  es: {teste: 'Prueba'},
+  pt: {teste: 'Teste'},
+})
+
+export default createI18n({
+  locale: navigator.language?.split('-')[0] || 'en',
+  fallbackLocale: 'en',
+  legacy: false,
+  messages: mergeMessages(getProjectMessages()),
+})
+```
+
+5. Configure Directives like the [example](?path=/docs/directives-sq-tooltip-sq-tooltip-directive--docs)
+
 ## How to Use
 
 After installation, you can import and use the components as needed in your Vue3 components:

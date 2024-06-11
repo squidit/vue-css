@@ -1,9 +1,28 @@
-import type { Parameters } from '@storybook/vue3'
+import { Parameters, setup } from '@storybook/vue3'
 import DocumentationTemplate from './documentation.template.mdx'
 import { themes } from '@storybook/theming'
+import i18n from '../src/i18n'
+import { tooltip } from '../src/directives/index'
 import '../src/main.scss'
 
+setup((app) => {
+  app.directive('tooltip', tooltip).use(i18n)
+})
+
 export const globalTypes = {
+  locale: {
+    name: 'Locale',
+    description: 'Internationalization locale',
+    toolbar: {
+      icon: 'globe',
+      items: [
+        { value: 'en', title: 'English' },
+        { value: 'pt', title: 'Português' },
+        { value: 'es', title: 'Español' },
+      ],
+      showName: true,
+    },
+  },
   theme: {
     name: 'Theme',
     description: 'Theme for components',
@@ -39,12 +58,12 @@ export const parameters: Parameters = {
   },
   options: {
     storySort: {
-      order: ['Getting Started', 'Components'],
+      order: ['Getting Started', 'Components', 'Helpers', 'Directives',],
     },
   },
 }
 
-const themeSelect = (Story, context) => {
+const selections = (Story, context) => {
   const html = document.getElementsByTagName('html')[0]
   html.classList.remove('light', 'dark')
   html.classList.add(context.globals.theme)
@@ -56,7 +75,11 @@ const themeSelect = (Story, context) => {
     })
   }
 
+  if (context.globals.locale) {
+    i18n.global.locale.value = context.globals.locale
+  }
+
   return Story(context)
 }
 
-export const decorators = [themeSelect]
+export const decorators = [selections]

@@ -1,0 +1,6 @@
+{
+  "required": "Required field",
+  "email": "Invalid email",
+  "url": "Invalid URL. Attention: URL must start with https://",
+  "phone": "Invalid phone number"
+}

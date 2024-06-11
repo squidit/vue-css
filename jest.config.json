@@ -10,9 +10,12 @@
   "moduleFileExtensions": ["vue", "js", "ts"],
   "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/$1",
+      "^@img/(.*)$": "<rootDir>/public/img/$1",
+      "^@locales/(.*)$": "<rootDir>/public/locales/$1",
       "^@src/(.*)$": "<rootDir>/src/$1",
       "^@components/(.*)$": "<rootDir>/src/components/$1",
-      "^@helpers/(.*)$": "<rootDir>/src/helpers/$1"
+      "^@helpers/(.*)$": "<rootDir>/src/helpers/$1",
+      "^@directives/(.*)$": "<rootDir>/src/directives/$1"
   },
   "coveragePathIgnorePatterns": ["/node_modules/", "/tests/"],
   "coverageReporters": ["text", "json-summary"],

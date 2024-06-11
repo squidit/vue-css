@@ -26,8 +26,11 @@
     "paths": {
       "@/*": ["./*"],
       "@src/*": ["./src/*"],
+      "@img/*": ["./public/img/*"],
+      "@locales/*": ["./public/locales/*"],
       "@components/*": ["./src/components/*"],
       "@helpers/*": ["./src/helpers/*"],
+      "@directives/*": ["./src/directives/*"],
     },
   },
   "include": ["src/**/*.ts", "src/**/*.vue"],

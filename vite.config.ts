@@ -13,7 +13,7 @@ export default defineConfig({
     libInjectCss(),
   ],
   build: {
-    cssCodeSplit: false, // Desabilite o code splitting de CSS para garantir que o CSS esteja no mesmo arquivo da biblioteca
+    cssCodeSplit: false,
     lib: {
       entry: 'src/vue-css.ts',
       name: 'vue-css',
@@ -21,7 +21,7 @@ export default defineConfig({
       fileName: (format) => `vue-css.${format}.js`,
     },
     rollupOptions: {
-      external: ['vue', '@squidit/css'],
+      external: ['vue', 'vue-i18n', '@squidit/css'],
       output: {
         assetFileNames: (assetInfo) => {
           if (assetInfo.name === 'style.css') return 'vue-css.css'
@@ -30,6 +30,7 @@ export default defineConfig({
         exports: 'named',
         globals: {
           vue: 'Vue',
+          'vue-i18n': 'VueI18n',
         },
       },
     },
@@ -37,9 +38,12 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './'),
+      '@img': path.resolve(__dirname, './public/img'),
+      '@locales': path.resolve(__dirname, './public/locales'),
       '@src': path.resolve(__dirname, './src'),
       '@components': path.resolve(__dirname, './src/components'),
       '@helpers': path.resolve(__dirname, './src/helpers'),
+      '@directives': path.resolve(__dirname, './src/directives'),
     },
   },
 })

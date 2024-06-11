@@ -1,0 +1,6 @@
+{
+  "required": "Campo obrigatório",
+  "email": "Email inválido",
+  "url": "URL inválida. Atenção: a URL deve começar com https://",
+  "phone": "Número de telefone inválido"
+}
