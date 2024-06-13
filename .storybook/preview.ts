@@ -1,18 +1,20 @@
 import { Parameters, setup } from '@storybook/vue3'
-import DocumentationTemplate from './documentation.template.mdx'
 import { themes } from '@storybook/theming'
-import i18n from '../src/i18n'
-import { tooltip } from '../src/directives/index'
+import VueCssPlugin from '../src/vue-css'
+import DocumentationTemplate from './documentation.template.mdx'
 import '../src/main.scss'
 
+let locale = navigator.language?.split('-')[0] || 'en'
+
 setup((app) => {
-  app.directive('tooltip', tooltip).use(i18n)
+  app.use(VueCssPlugin, { locale })
 })
 
 export const globalTypes = {
   locale: {
     name: 'Locale',
     description: 'Internationalization locale',
+    defaultValue: navigator.language?.split('-')[0] || 'en',
     toolbar: {
       icon: 'globe',
       items: [
@@ -76,7 +78,7 @@ const selections = (Story, context) => {
   }
 
   if (context.globals.locale) {
-    i18n.global.locale.value = context.globals.locale
+    locale = context.globals.locale
   }
 
   return Story(context)

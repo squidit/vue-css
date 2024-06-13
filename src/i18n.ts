@@ -1,4 +1,4 @@
-import { createI18n, I18nOptions } from 'vue-i18n'
+import { I18nOptions } from 'vue-i18n'
 import merge from 'lodash.merge'
 
 import enSqInput from '@locales/SqInput/en.json'
@@ -22,11 +22,3 @@ const getMessages = () => {
 export function mergeMessages(projectMessages: I18nOptions['messages']) {
   return merge(getMessages(), projectMessages)
 }
-
-export default createI18n({
-  locale: navigator.language?.split('-')[0] || 'en',
-  fallbackLocale: 'en',
-  globalInjection: true,
-  legacy: false,
-  messages: getMessages(),
-})

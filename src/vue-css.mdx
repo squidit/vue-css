@@ -52,41 +52,55 @@ npm install @squidit/css @squidit/vue-css
 yarn add @squidit/css @squidit/vue-css
 ```
 
-3. Configure css in your project according to the @squidit/css documentation described in the project's [README](https://github.com/squidit/css/blob/master/README.md)
+3. Import CSS into your global style (`style.scss`):
 
-4. Configure i18n like te example below:
+```css
+$fontsFolderPath: '~@squidit/css/dist/fonts'; /* Overwrite default font path */
+@import '~@squidit/css/src/scss/squid.scss'; /* Import all Framework Styles */
+```
 
-main.ts
+4. Use `VueCssPlugin` into your `main.ts`:
 
 ```typescript
+import App from './App.vue'
 import { createApp } from 'vue'
-import App from '@src/App.vue'
-import i18n from '@src/i18n'
+import VueCssPlugin from '@squidit/vue-css'
+import './style.scss'
 
-createApp(App).use(i18n).mount('#app')
+createApp(App).use(VueCssPlugin).mount('#app')
 ```
 
-i18n.ts
+5. `vue-css` includes i18n in its own structure, if you want to use it, just pass the messages in the plugin options:
 
 ```typescript
-import { createI18n } from 'vue-i18n'
-import { mergeMessages } from '@squidit/vue-css'
-
 const getProjectMessages = () => ({
-  en: {teste: 'Test'},
-  es: {teste: 'Prueba'},
-  pt: {teste: 'Teste'},
+  en: {test: 'Test'},
+  es: {test: 'Prueba'},
+  pt: {test: 'Teste'},
+  de: {test: 'prüfen'},
 })
 
-export default createI18n({
-  locale: navigator.language?.split('-')[0] || 'en',
-  fallbackLocale: 'en',
-  legacy: false,
-  messages: mergeMessages(getProjectMessages()),
-})
+app.use(VueCssPlugin, { messages: getProjectMessages() })
 ```
 
-5. Configure Directives like the [example](?path=/docs/directives-sq-tooltip-sq-tooltip-directive--docs)
+6. To control the language used:
+
+```html
+<script setup lang="ts">
+import { t, changeLocale } from '@squidit/vue-css'
+
+changeLocale('pt')
+
+const teste = t('teste')
+</script>
+
+<template>
+  {{ teste }}
+  {{ t('teste') }}
+</template>
+
+<style scoped></style>
+```
 
 ## How to Use
 
