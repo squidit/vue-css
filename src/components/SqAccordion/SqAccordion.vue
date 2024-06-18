@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { provide, ref, onMounted, ComponentInternalInstance } from 'vue'
+import { SqSleep } from '@helpers/index'
 
 const props = defineProps<{
   openOnlyOne?: boolean
@@ -8,9 +9,10 @@ const props = defineProps<{
 
 const collapses = ref<ComponentInternalInstance[]>([])
 
-onMounted(() => {
+onMounted(async () => {
   if (props?.openFirst) {
     if (collapses.value.length) {
+      await SqSleep()
       collapses.value[0].exposed?.toggleCollapse()
     }
   }

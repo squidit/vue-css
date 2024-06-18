@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { onUnmounted, ref, StyleValue, watch } from 'vue'
-import { SqWindowHelper } from '@helpers/index'
+import { SqWindowHelper, SqSleep } from '@helpers/index'
 
 const sqWindowHelper = new SqWindowHelper()
 
@@ -36,12 +36,11 @@ const scrollY = ref(sqWindowHelper.window()?.scrollY)
 
 onUnmounted(() => {
   removeModalFromBody()
-  document.removeEventListener('click', backdropClick)
 })
 
 watch(
   () => props.open,
-  (open) => {
+  async (open) => {
     const _modal = modal.value
     if (_modal) {
       const body = document.getElementsByTagName('body')[0]
@@ -53,6 +52,7 @@ watch(
         _modal.style.display = 'flex'
         sqWindowHelper.window()?.addEventListener('keydown', onKeydown)
         modals.value = document.getElementsByClassName('modal open')
+        await SqSleep(10)
         modalNumber.value = modals.value?.length || 0
         document.addEventListener('click', backdropClick)
         if (modalNumber.value <= 1) {
@@ -93,6 +93,7 @@ const removeModalFromBody = () => {
     backdrop?.parentNode?.removeChild(backdrop)
   }
   sqWindowHelper.window()?.removeEventListener('keydown', onKeydown)
+  document.removeEventListener('click', backdropClick)
 }
 
 const onKeydown = (event: KeyboardEvent) => {
