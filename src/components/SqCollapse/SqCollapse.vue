@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { getCurrentInstance, inject, ref, onMounted, ComponentInternalInstance, onUpdated } from 'vue'
+import { getCurrentInstance, inject, ref, onMounted, ComponentInternalInstance, onUpdated, watch } from 'vue'
 import { SqLoader } from '@components/index'
 import { SqColorsHelper } from '@helpers/index'
 
@@ -49,6 +49,13 @@ onMounted(() => {
 onUpdated(() => {
   emitRegister()
 })
+
+watch(
+  () => props?.open,
+  (value) => {
+    open.value = value
+  },
+)
 
 const emitRegister = (bypass = false) => {
   const instance = getCurrentInstance()
