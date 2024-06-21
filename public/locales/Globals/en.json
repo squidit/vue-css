@@ -1,0 +1,11 @@
+{
+  "forms": {
+    "required": "Required field",
+    "email": "Invalid email",
+    "url": "Invalid URL. Attention: URL must start with https://",
+    "phone": "Invalid phone number",
+    "search": "Search",
+    "searchSelectEmpty": "No options to select",
+    "minimumRequired": "The minimum number of selected tags must be greater than or equal to {{ minTags }}"
+  }
+}

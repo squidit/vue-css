@@ -22,15 +22,15 @@ const props = defineProps<{
   <div
     class="wrapper-tooltip"
     v-tooltip="props?.message"
-    :placement="props?.placement"
-    :trigger="props?.trigger"
+    :placement="props?.placement || 'center top'"
+    :trigger="props?.trigger || 'hover'"
     :style="{
       color: props?.color,
-      fontSize: props?.fontSize,
+      fontSize: props?.fontSize || '1rem',
     }"
   >
-    <div class="icon" v-if="props?.icon" v-html="props?.icon" :style="{ fontSize: props?.fontSize }"></div>
-    <i class="fa-solid fa-circle-question icon" v-if="!props?.icon"></i>
+    <div class="icon" v-if="props?.icon" v-html="props?.icon" :style="{ fontSize: props?.fontSize || '1rem' }"></div>
+    <i class="fa-solid fa-circle-question icon" v-if="!props?.icon" />
   </div>
 </template>
 

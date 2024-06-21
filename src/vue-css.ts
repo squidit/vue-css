@@ -26,6 +26,7 @@ export default {
 
 export * from './components'
 export * from './helpers'
+export * from './interfaces'
 
 export const t = (key: string) => {
   if (!key) {

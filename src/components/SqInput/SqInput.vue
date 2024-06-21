@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, StyleValue } from 'vue'
+import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { SqValidatorHelper } from '@helpers/sq-validator/sq-validator.helper'
 import { SqTooltip } from '@components/index'
@@ -24,7 +24,16 @@ const props = defineProps<{
   required?: boolean
   useFormErrors?: boolean
   tooltipMessage?: string
-  tooltipPlacement?: 'center top' | 'center bottom' | 'left center' | 'right center'
+  tooltipPlacement?:
+    | 'left top'
+    | 'left center'
+    | 'left bottom'
+    | 'center top'
+    | 'center center'
+    | 'center bottom'
+    | 'right top'
+    | 'right center'
+    | 'right bottom'
   tooltipColor?: string
   tooltipIcon?: string
   backgroundColor?: string
@@ -46,6 +55,7 @@ type Emits = {
 
 const emit = defineEmits<Emits>()
 
+const _name = ref(props.name || `random-name-${(1 + Date.now() + Math.random()).toString().replace('.', '')}`)
 const _value = ref(props?.value || '')
 const error = ref<boolean | string>(false)
 const timeoutInput = ref<ReturnType<typeof setTimeout>>()
@@ -55,16 +65,16 @@ const validate = async (isBlur = false) => {
     error.value = false
   } else if (!!props?.required && !_value.value) {
     emit('valid', false)
-    error.value = t('SqInput.required')
+    error.value = t('Globals.forms.required')
   } else if (props?.type === 'email' && !sqValidatorHelper.email(_value.value)) {
     emit('valid', false)
-    error.value = t('SqInput.email')
+    error.value = t('Globals.forms.email')
   } else if (props?.type === 'tel' && !sqValidatorHelper.phone(_value.value)) {
     emit('valid', false)
-    error.value = t('SqInput.phone')
+    error.value = t('Globals.forms.phone')
   } else if (props?.type === 'url' && _value.value && _value.value?.length && !sqValidatorHelper.url(_value.value)) {
     emit('valid', false)
-    error.value = t('SqInput.url')
+    error.value = t('Globals.forms.url')
   } else {
     emit('valid', true)
     error.value = ''
@@ -104,11 +114,9 @@ const keyUp = (event: KeyboardEvent) => {
     >
       <div
         v-if="props?.label"
-        :style="
-          {
-            color: props?.labelColor,
-          } as StyleValue
-        "
+        :style="{
+          color: props?.labelColor,
+        }"
         v-html="props?.label"
       ></div>
       <SqTooltip
@@ -143,7 +151,7 @@ const keyUp = (event: KeyboardEvent) => {
         }"
         :id="props?.id"
         :type="props?.type || 'text'"
-        :name="props?.name"
+        :name="_name"
         :placeholder="props?.placeholder"
         :required="props?.required"
         :disabled="props?.disabled"
@@ -181,7 +189,7 @@ const keyUp = (event: KeyboardEvent) => {
           'visibility-hidden-force': !error && !props?.externalError,
         }"
         class="fa-solid fa-triangle-exclamation"
-      ></i>
+      />
       {{ props?.externalError ? props?.externalError : '' }}
       {{ error && !props?.externalError ? error : '' }}
       <span

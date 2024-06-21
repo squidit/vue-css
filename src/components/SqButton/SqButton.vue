@@ -118,7 +118,7 @@ const executeFunction = (event: MouseEvent) => {
     class="button"
     :class="{
       [`button-${props?.color}`]: props?.color,
-      [`button-${props?.size}`]: props?.size,
+      [`button-${props?.size || 'md'}`]: props?.size || 'md',
       disabled: props?.disabled,
       loading: props?.loading,
       block: props?.block,

@@ -1,20 +1,20 @@
 import { I18nOptions } from 'vue-i18n'
 import merge from 'lodash.merge'
 
-import enSqInput from '@locales/SqInput/en.json'
-import esSqInput from '@locales/SqInput/es.json'
-import ptSqInput from '@locales/SqInput/pt.json'
+import enGlobals from '@locales/Globals/en.json'
+import esGlobals from '@locales/Globals/es.json'
+import ptGlobals from '@locales/Globals/pt.json'
 
 const getMessages = () => {
   return {
     en: {
-      SqInput: enSqInput,
+      Globals: enGlobals,
     },
     es: {
-      SqInput: esSqInput,
+      Globals: esGlobals,
     },
     pt: {
-      SqInput: ptSqInput,
+      Globals: ptGlobals,
     },
   }
 }

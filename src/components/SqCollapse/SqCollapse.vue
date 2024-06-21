@@ -19,7 +19,7 @@ const props = defineProps<{
 }>()
 
 type Emits = {
-  'opened-emitter': [open: boolean, element?: HTMLDivElement]
+  'opened-emitter': [{ open: boolean; element?: HTMLDivElement }]
 }
 
 const emit = defineEmits<Emits>()
@@ -106,7 +106,7 @@ defineExpose({
         backgroundColor: hoverHeader ? setHover(props?.color) : props?.color,
         borderColor: hoverHeader ? setHover(props?.color) : props?.color,
       }"
-      @click="emit('opened-emitter', !open, element), toggleCollapse()"
+      @click="emit('opened-emitter', { open: !open, element }), toggleCollapse()"
       @mouseover="hoverHeader = true"
       @mouseleave="hoverHeader = false"
       ref="element"
@@ -132,7 +132,7 @@ defineExpose({
           :class="{
             'fa-rotate-180': !props?.disabled && open,
           }"
-        ></i>
+        />
         <div v-if="props?.loading" class="display-flex justify-content-center align-items-center" style="height: 100%">
           <SqLoader color="inherit"></SqLoader>
         </div>

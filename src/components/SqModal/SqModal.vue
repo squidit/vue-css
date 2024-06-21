@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { onUnmounted, ref, StyleValue, watch } from 'vue'
+import { onUnmounted, ref, watch } from 'vue'
 import { SqWindowHelper, SqSleep } from '@helpers/index'
 
 const sqWindowHelper = new SqWindowHelper()
@@ -121,33 +121,29 @@ const events = (key: string) => {
 </script>
 
 <template>
-  <div class="modal align-items-center" :class="(props?.backdropClass, { open: props?.open })" :id="_id" ref="modal">
-    <div class="modal-dialog" :class="(props?.modalClass, { [`modal-${props?.modalSize}`]: props?.modalSize })">
+  <div class="modal align-items-center" :class="[props?.backdropClass, { open: props?.open }]" :id="_id" ref="modal">
+    <div class="modal-dialog" :class="[props?.modalClass, { [`modal-${props?.modalSize || 'md'}`]: props?.modalSize || 'md' }]">
       <div class="modal-content modal-sq">
         <div
           class="modal-header"
           :class="{ 'without-header': !$slots.headerTemplate }"
-          :style="
-            {
-              background: props?.headerBackgroundColor,
-              padding: props?.headerPadding,
-            } as StyleValue
-          "
+          :style="{
+            background: props?.headerBackgroundColor,
+            padding: props?.headerPadding,
+          }"
         >
           <slot v-if="$slots.headerTemplate" name="headerTemplate"></slot>
           <button v-if="props?.buttonClose" type="button" class="close button-close" aria-label="Close" @click="emit('modal-close')">
-            <i class="fa-solid fa-xmark fa-lg"></i>
+            <i class="fa-solid fa-xmark fa-lg" />
           </button>
         </div>
 
         <div
           class="modal-body scrollbar"
-          :style="
-            {
-              background: props?.bodyBackgroundColor,
-              padding: props?.bodyPadding,
-            } as StyleValue
-          "
+          :style="{
+            background: props?.bodyBackgroundColor,
+            padding: props?.bodyPadding || '0 1rem',
+          }"
         >
           <slot></slot>
         </div>
@@ -155,12 +151,10 @@ const events = (key: string) => {
         <div
           v-if="$slots.footerTemplate"
           class="modal-footer"
-          :style="
-            {
-              background: props?.footerBackgroundColor,
-              padding: props?.footerPadding,
-            } as StyleValue
-          "
+          :style="{
+            background: props?.footerBackgroundColor,
+            padding: props?.footerPadding,
+          }"
         >
           <slot name="footerTemplate"></slot>
         </div>

@@ -1,0 +1,11 @@
+{
+  "forms": {
+    "required": "Campo obrigatório",
+    "email": "Email inválido",
+    "url": "URL inválida. Atenção: a URL deve começar com https://",
+    "phone": "Número de telefone inválido",
+    "search": "Buscar",
+    "searchSelectEmpty": "Não há opções a serem selecionadas",
+    "minimumRequired": "O número mínimo de tags selecionadas tem que ser maior ou igual a {{ minTags }}"
+  }
+}

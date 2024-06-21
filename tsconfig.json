@@ -30,6 +30,7 @@
       "@locales/*": ["./public/locales/*"],
       "@components/*": ["./src/components/*"],
       "@helpers/*": ["./src/helpers/*"],
+      "@interfaces/*": ["./src/interfaces/*"],
     },
   },
   "include": ["src/**/*.ts", "src/**/*.vue"],

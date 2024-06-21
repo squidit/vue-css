@@ -10,7 +10,7 @@ const props = defineProps<{
 <template>
   <div
     class="loader"
-    :class="props?.size"
+    :class="props?.size || 'small'"
     role="status"
     :style="{
       borderColor: props?.color || 'var(--pink)',
