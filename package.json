@@ -1,6 +1,6 @@
 {
   "name": "@squidit/vue-css",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "scripts": {
     "start": "vite",
     "storybook": "storybook dev -p 6006",
